@@ -8,27 +8,27 @@
 				imgMode="aspectFill" bgColor="#ffffff" effect3d-previous-margin="90" border-radius="12"></u-swiper>
 			</div>
 			
-			<!-- 文章列表 -->
+			<!-- 项目列表 -->
 			<view class="project-wrapper">
-				<u-waterfall v-model="flowList">
-					<template v-slot:left="{leftList}">
-						<view  class="water" v-for="(item, index) in leftList" :key="index">
-							<!-- 这里编写您的内容，item为您传递给v-model的数组元素 -->
-							<u-lazy-load threshold="-450" border-radius="10" :image="item.image" :index="index" ></u-lazy-load>
-							<view class="item-title">{{ item.title }}</view>
-							<view class="item-author">{{ item.author }}</view>
-						</view>
-					</template>
-					<template v-slot:right="{rightList}">
+				<view class="item-container">
+					<view class="image-wrapper">
+						<u-image 
+						border-radius="10"
+						src="https://www.wanandroid.com/blogimgs/53dca75f-b021-41b7-a5ab-aa2f9ebceed7.png" 
+						mode="widthFix"
+						width="140rpx" ></u-image>
+					</view>
+					<div class="text-wrapper">
+						<div class="title">
+							<text >Flutter_Mall 基于litemall的Flutter开源在线商城应用程序</text>
+						</div>
 						
-						<view  class="water" v-for="(item, index) in rightList" :key="index">
-							<!-- 这里编写您的内容，item为您传递给v-model的数组元素 -->
-							<u-lazy-load threshold="-450" border-radius="10" :image="item.image" :index="index" ></u-lazy-load>
-							<view class="item-title">{{ item.title }}</view>
-							<view class="item-author">{{ item.author }}</view>
-						</view>
-					</template>
-				</u-waterfall>
+						<div class="author-info">
+							<text>979451341</text>
+							<text>2021-01-28 00:35</text>
+						</div>
+					</div>
+				</view>
 			
 			</view>
 			
@@ -181,25 +181,38 @@
 	}
 	
 	.project-wrapper{
-		background-color: #C8C9CC;
-		margin-bottom: 100rpx;
 		width: 100%;
+		height: 100%;
+		background-color: #FFFFFF;
 	}
 	
-	.water{
-		border-radius: 16rpx;
-		margin: 10rpx;
-		background-color: #ffffff;
-		padding: 16rpx;
-		position: relative;
+	.item-container{
+		background-color: #DBF1E1;
+		display: flex;
+		flex-direction: row;
+		margin-left: 15rpx;
+		margin-right: 15rpx;
+		margin-bottom: 15rpx;
+		box-sizing: content-box;
+		border-radius: 10rpx;
+		padding-top: 10rpx;
+	    padding-left: 10rpx;
+		padding-bottom: 2rpx;
+	}
+	.image-wrapper{
+		display: table-cell;
+	}
+	
+	.text-wrapper{
+		display: table-cell;
+		margin-left: 10rpx;
+		height: 100%;
+		background-color: #007AFF;
 		
 	}
-	.item-title{
-		margin-top: 10rpx;
-		display: flex;
-	}
-	.item-author{
-		margin-top: 10rpx;
-		display: flex;
-	}
+	
+	
+	
+	
+	
 </style>
