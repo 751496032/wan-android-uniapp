@@ -37,8 +37,6 @@
 				<u-loading mode="flower" size="60" :show="show"></u-loading>
 			</div>
 			
-			
-			
 		</div>
 		
 		<!-- 与包裹页面所有内容的元素u-page同级，且在它的下方 -->
@@ -81,9 +79,6 @@
 			
 		},
 
-		destroyed() {
-
-		},
 		methods: {
 			
 			getProjectInfo(pageIndex){
@@ -95,11 +90,14 @@
 						
 						if(res.data.errorCode==0){
 							let realData=res.data.data.datas
+							let tempData=[]
 							for (var i = 0; realData!=null&& i <realData.length; i++) {
 								let item=realData[i]
 								let project=new Project(item.envelopePic,item.title,item.author,item.niceDate)
-								_this.flowList.push(project)
+								tempData.push(project)
 							}
+							_this.flowList=_this.flowList.concat(tempData)
+							console.log('flowList: '+_this.flowList.length)
 						}
 						
 					},
@@ -184,21 +182,24 @@
 	
 	.project-wrapper{
 		background-color: #C8C9CC;
+		margin-bottom: 100rpx;
+		width: 100%;
 	}
 	
 	.water{
-		border-radius: 8px;
-		margin: 5px;
+		border-radius: 16rpx;
+		margin: 10rpx;
 		background-color: #ffffff;
-		padding: 8px;
+		padding: 16rpx;
 		position: relative;
+		
 	}
 	.item-title{
-		margin-top: 5px;
+		margin-top: 10rpx;
 		display: flex;
 	}
 	.item-author{
-		margin-top: 5px;
+		margin-top: 10rpx;
 		display: flex;
 	}
 </style>
