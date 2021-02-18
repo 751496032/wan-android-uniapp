@@ -4,7 +4,7 @@
 	
 		<!-- 所有内容的容器 -->
 		<!-- 与包裹页面所有内容的元素u-page同级，且在它的下方 -->
-		<u-tabbar class="tabbar"  v-model="current" :iconSize="50" :list="tabbar" :inactive-color="inactiveColor" :activeColor="activeColor"
+		<u-tabbar class="tabbar"  v-model="current" :iconSize="40" :list="tabbar" :inactive-color="inactiveColor" :activeColor="activeColor"
 		 :hideTabBar="true"></u-tabbar>
 	</view>
 </template>
