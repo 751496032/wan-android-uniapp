@@ -17,8 +17,8 @@
 						<text class="text-title">{{item.title}}</text>
 
 						<view class="text-bottom-container">
-							<text>作者：{{item.author}}</text>
-							<text>日期：{{item.date}}</text>
+							<view>作者:{{item.author}}</view>
+							<view>日期:{{item.date}}</view>
 						</view>
 					</view>
 				</view>
@@ -31,11 +31,11 @@
 			</view>
 			<!-- 列表加载更多 -->
 			<view class="loadmore-wrapper" v-show="showLoadmore">
-				<u-loadmore :status="loadmoreStatus"  icon-type="flower"/>
+				<u-loadmore :status="loadmoreStatus" icon-type="flower" />
 			</view>
-		
-			
-			
+
+
+
 		</view>
 
 		<!-- 与包裹页面所有内容的元素u-page同级，且在它的下方 -->
@@ -62,11 +62,11 @@
 				show: true,
 				bannerList: [],
 				currentPage: 1,
-				totalSize:0,
+				totalSize: 0,
 				projectList: [],
-				showLoadmore:false,
-				loadmoreStatus:'loading',
-				isPullDownRefresh:false
+				showLoadmore: false,
+				loadmoreStatus: 'loading',
+				isPullDownRefresh: false
 			}
 		},
 
@@ -84,26 +84,26 @@
 			this.getBannerInfo()
 
 		},
-		
+
 		/* 下拉刷新监听 */
 		onPullDownRefresh() {
-			this.currentPage==1
-			this.isPullDownRefresh=true
+			this.currentPage = 1
+			this.isPullDownRefresh = true
 			this.getProjectInfo(this.currentPage)
 		},
-		
+
 		/* 滚动底部监听 */
 		onReachBottom() {
-			
-			console.log('onReachBottom  '  + (this.currentPage) + ' >> '+ (this.totalSize) + ' >> '+ this.projectList.length)
-			
-			if(this.currentPage==1 || this.projectList.length==0) return
-			if(this.totalSize<=this.projectList.length){
-				this.loadmoreStatus="nomore"
+
+			console.log('onReachBottom  ' + (this.currentPage) + ' >> ' + (this.totalSize) + ' >> ' + this.projectList.length)
+
+			if (this.currentPage == 1 || this.projectList.length == 0) return
+			if (this.totalSize <= this.projectList.length) {
+				this.loadmoreStatus = "nomore"
 				return
 			}
 			console.log('onReachBottom test')
-			this.showLoadmore=true
+			this.showLoadmore = true
 			this.getProjectInfo(this.currentPage)
 		},
 
@@ -118,11 +118,11 @@
 
 						if (res.data.errorCode == 0) {
 							uni.stopPullDownRefresh();
-							if(_this.currentPage==1){
-								_this.totalSize=res.data.data.total
+							if (_this.currentPage == 1) {
+								_this.totalSize = res.data.data.total
 							}
 							let realData = res.data.data.datas
-							
+
 							let tempData = []
 							for (var i = 0; realData != null && i < realData.length; i++) {
 								let item = realData[i]
@@ -130,18 +130,18 @@
 								tempData.push(project)
 							}
 							console.log('projectList: ' + _this.projectList.length)
-							if(tempData.length<=0){
+							if (tempData.length <= 0) {
 								return
 							}
-							
-							_this.projectList = _this.isPullDownRefresh?tempData:_this.projectList.concat(tempData)
+
+							_this.projectList = _this.isPullDownRefresh ? tempData : _this.projectList.concat(tempData)
 							_this.currentPage++;
-							_this.isPullDownRefresh=false
+							_this.isPullDownRefresh = false
 						}
 
 					},
 					fail(res) {
-						
+
 					},
 					complete() {
 						if (pageIndex == 1) {
@@ -187,7 +187,6 @@
 </script>
 
 <style>
-
 	.banner-wrapper {
 		width: 100%;
 		height: 300rpx;
@@ -241,14 +240,20 @@
 
 	.text-bottom-container {
 		width: 100%;
-		font-size: 12rpx;
 		display: flex;
 		flex-direction: row;
 		/* align-items: flex-end; */
+		justify-content: space-between;
 	}
 
-	.text-bottom-container text {
-		flex: 1;
+	.text-bottom-container view {
 		align-self: flex-end;
+		font-size: 12rpx;
+		overflow: hidden;
+		
 	}
+	
+
+	
+	
 </style>

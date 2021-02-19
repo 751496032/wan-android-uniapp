@@ -20,9 +20,9 @@
 			}
 
 		}, {
-			"path": "pages/wanandroid/official/official",
+			"path": "pages/wanandroid/official-account/official",
 			"style": {
-				"navigationBarTitleText": "我的",
+				"navigationBarTitleText": "公众号",
 				"enablePullDownRefresh": false
 
 			}
@@ -48,7 +48,7 @@
 		"color": "#7A7E83",
 		"selectedColor": "#38b3f4",
 		"backgroundColor": "#ffffff",
-		"fontSize":"12px",
+		"fontSize":"10px",
 		"list":[{
 			"text":"首页",
 			"iconPath":"static/icon_home_unselected.png",
@@ -56,10 +56,10 @@
 			"pagePath":"pages/wanandroid/home/home"
 		},
 		{
-			"text":"我的",
+			"text":"公众号",
 			"iconPath":"static/icon_official_unselected.png",
 			"selectedIconPath":"static/icon_official_selected.png",
-			"pagePath":"pages/wanandroid/official/official"
+			"pagePath":"pages/wanandroid/official-account/official"
 		}]
 	}
 }

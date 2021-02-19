@@ -9,11 +9,11 @@ export function initTabbar() {
 		{
 			iconPath: "/static/icon_official_unselected.png",
 			selectedIconPath: "/static/icon_official_selected.png",
-			text: '我的',
+			text: '公众号',
 			count: 2,
 			isDot: true,
 			customIcon: false,
-			pagePath: '/pages/wanandroid/official/official',
+			pagePath: '/pages/wanandroid/official-account/official',
 		}
 	]
 }
