@@ -10,11 +10,11 @@
 </template>
 
 <script>
-	import {getTabbarData} from "../../../utils/common.js"
+	import {initTabbar} from "../../../utils/common.js"
 	export default {
 		data() {
 			return {
-				tabbar:getTabbarData(),
+				tabbar:initTabbar(),
 				current: 0,
 				inactiveColor: '#bfbfbf',
 				activeColor: '#38b3f4',

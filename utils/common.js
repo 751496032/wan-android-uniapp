@@ -1,4 +1,4 @@
-export function getTabbarData() {
+export function initTabbar() {
 	return [{
 			iconPath: "/static/icon_home_unselected.png",
 			selectedIconPath: "/static/icon_home_selected.png",

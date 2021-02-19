@@ -4,7 +4,7 @@
 			<!-- 所有内容的容器 -->
 		</view>
 		<!-- 与包裹页面所有内容的元素u-page同级，且在它的下方 -->
-		<u-tabbar class="tabbar"  v-model="current" :iconSize="40" :list="tabbar" :inactive-color="inactiveColor" :activeColor="activeColor"
+		<u-tabbar ref="tabbar"  v-model="current" :iconSize="40" :list="tabbar" :inactive-color="inactiveColor" :activeColor="activeColor"
 		 :hideTabBar="true"></u-tabbar>
 
 	</view>
@@ -13,7 +13,7 @@
 
 <script>
 	import Tabbar from '../../uview-ui/components/u-tabbar/u-tabbar.vue'
-	import {getTabbarData} from '../../utils/common.js'
+	import {initTabbar} from '../../utils/common.js'
 
 	export default {
 		components: {
@@ -21,7 +21,7 @@
 		},
 		data() {
 			return {
-				tabbar: getTabbarData(),
+				tabbar: initTabbar(),
 				current: 0,
 				inactiveColor: '#bfbfbf',
 				activeColor: '#38b3f4',
@@ -29,7 +29,8 @@
 		},
 
 		onLoad: function() {
-			this.tabbar = getTabbarData()
+			console.log('onLoad')
+			this.tabbar = initTabbar()
 		},
 
 		onInit: () => {
@@ -47,8 +48,8 @@
 		},
 
 		mounted() {
+			console.log('mounted')
 			this.$refs.tabbar.switchTab(0)
-
 		},
 
 		methods: {}
