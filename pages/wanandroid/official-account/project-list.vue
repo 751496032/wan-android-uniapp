@@ -2,13 +2,7 @@
 	<view class="content">
 		<!-- 所有内容的容器 -->
 		<view class="u-page">
-			<!-- 轮播图 -->
-			<view class="banner-wrapper">
-				<u-swiper :list="bannerList" :effect3d="true" :height="290" mode="dot" 
-				imgMode="aspectFill" bgColor="#ffffff" effect3d-previous-margin="90"
-				 border-radius="12" @click="click"></u-swiper>
-			</view>
-
+			
 			<!-- 项目列表 -->
 			<view class="project-wrapper">
 				<view class="item-container" v-for="(item,index) in projectList" :key="index" @click="onItemClick(item,index)">
@@ -39,30 +33,20 @@
 
 		</view>
 
-		<!-- 与包裹页面所有内容的元素u-page同级，且在它的下方 -->
-		<u-tabbar class="tabbar" v-model="current" :iconSize="40" :list="tabbar" :inactive-color="inactiveColor" :activeColor="activeColor"
-		 :hideTabBar="true"></u-tabbar>
 
 	</view>
 </template>
 
 <script>
+	
 	import {
-		initTabbar
-	} from "../../../utils/common.js"
-	import {
-		Project,Banner
-	} from './model.js'
+		Project
+	} from '../home/model.js'
 	export default {
 		data() {
 			return {
-				tabbar: initTabbar(),
-				current: 0,
-				inactiveColor: '#bfbfbf',
-				activeColor: '#38b3f4',
-				show: true,
-				bannerList: [],
-				banners:[],
+				title:'',
+				id:'',
 				currentPage: 1,
 				totalSize: 0,
 				projectList: [],
@@ -72,8 +56,13 @@
 			}
 		},
 
-		onLoad: function() {
-
+		onLoad: function(option) {
+			console.log("onLoad project list "+JSON.stringify(option))
+			this.title=option.title
+			this.id=option.id
+			uni.setNavigationBarTitle({
+				title:option.title
+			})
 		},
 
 		created() {
@@ -83,7 +72,7 @@
 
 		mounted() {
 			console.log('mounted')
-			this.getBannerInfo()
+			this.getProjectInfo(this.currentPage)
 
 		},
 
@@ -129,13 +118,7 @@
 				this.gotoWebView(item.title,item.url)
 			},
 			
-			click(index){
-				console.log('index '+index)
-				let item=this.banners[index]
-				console.log('index '+item.title)
-				this.gotoWebView(item.title,item.url)
-			},
-			
+		
 			
 			gotoWebView(title,url){
 				console.log('title '+title)
@@ -151,7 +134,7 @@
 			getProjectInfo(pageIndex) {
 				let _this = this
 				uni.request({
-					url: "https://www.wanandroid.com/project/list/".concat(pageIndex).concat("/json?cid=294"),
+					url: "https://wanandroid.com/wxarticle/list/".concat(_this.id+'/').concat(pageIndex).concat("/json"),
 					success(res) {
 						console.log('getProjectInfo body: ' + JSON.stringify(res.data))
 
@@ -192,47 +175,13 @@
 				})
 			},
 
-			getBannerInfo() {
-				let _this = this
-				uni.request({
-					url: 'https://www.wanandroid.com/banner/json',
-					header: {
-						"Access-Control-Allow-Origin": '*'
-					},
-					success(res) {
-						// let json = JSON.parse()
-						//将对象转成json字符串
-						console.log('getBannerInfo result: ' + JSON.stringify(res.data))
-						if (res.data.errorCode == 0) {
-							let data = res.data.data
-							for (var i = 0; data != null && data.length > 0 && i < data.length; i++) {
-								let item = data[i]
-								_this.bannerList.push(item.imagePath)
-								_this.banners.push(new Banner(item.title,item.url))
-								console.log("item img: " + item.imagePath)
-							}
-						}
-					},
-					fail(res) {
-						console.log('error: ' + res.message)
-					},
-					complete: () => {
-						_this.getProjectInfo(_this.currentPage)
-					}
-
-				})
-			},
-
+		
 		}
 	}
 </script>
 
 <style>
-	.banner-wrapper {
-		width: 100%;
-		height: 300rpx;
-		margin-top: 15rpx;
-	}
+	
 
 	.loading-wrapper {
 		width: 100%;

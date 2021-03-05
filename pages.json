@@ -16,7 +16,13 @@
 			"path": "pages/wanandroid/home/home",
 			"style": {
 				"navigationBarTitleText": "首页",
-				"enablePullDownRefresh": true
+				"enablePullDownRefresh": true,
+				"app-plus":{
+					"titleNView":{
+						"homeButton":true
+						
+					}
+				}
 			}
 
 		}, {
@@ -30,11 +36,46 @@
 		{
 			"path": "pages/wanandroid/main",
 			"style": {
-				"navigationBarTitleText": "WanAndroid",
-				"enablePullDownRefresh": false
+				"navigationBarTitleText": "首页",
+				"enablePullDownRefresh": false,
+				"app-plus":{
+					"animationType": "none",
+					"animationDuration": 50,
+					"titleNView":{
+						"homeButton":true,
+						"autoBackButton":false
+						
+						
+					}
+				}
 
 			}
 
+		},
+		{
+			"path":"pages/wanandroid/detail/webview",
+			"style":{
+				"navigationBarTitleText":"详情",
+				"enablePullDownRefresh":false,
+				 "app-plus": {  
+				    "titleNView": {  
+				        "buttons":[{
+							// "text":"分享",
+							// "fontSize":"18",
+							"type":"share",
+							"width":"46px"
+						}]
+				    }  
+				 }
+			}
+		},
+		{
+			"path":"pages/wanandroid/official-account/project-list",
+			"style":{
+				"navigationBarTitleText": "公众号",
+				"enablePullDownRefresh": true
+				
+			}
 		}
 	],
 	"globalStyle": {

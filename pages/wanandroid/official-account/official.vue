@@ -5,7 +5,7 @@
 		<view class="grid-list-wrapper" v-show="isShowGrid">
 			<u-grid :col="3" @click="click">
 				<u-grid-item v-for="(value,index) in list" :key='index' :index="index">
-					<u-icon name="weixin-fill" :size="50"></u-icon>
+					<u-icon name="weixin-fill" :size="52"></u-icon>
 					<view class="grid-text">{{value.name}}</view>
 				</u-grid-item>
 			</u-grid>
@@ -78,7 +78,12 @@
 			},
 			click(index) {
 				console.log('click item ' + this.list[index].name)
-				this.showToast(this.list[index].name)
+				// this.showToast(this.list[index].name)
+				uni.navigateTo({
+					url:'project-list?title='.concat(this.list[index].name).concat("&id=").concat(this.list[index].id),
+					animationType: 'slide-in-right',
+					animationDuration: 300
+				})
 			},
 
 			showToast(msg) {
@@ -117,9 +122,9 @@
 	}
 
 	.grid-text {
-		font-size: 12rpx;
+		font-size: 24rpx;
 		margin-top: 20rpx;
 		/* 用于修改字体大小，在内置浏览器中最小是12rpx，无法更小 */
-		transform: scale(0.8);
+		/* transform: scale(0.8); */
 	}
 </style>

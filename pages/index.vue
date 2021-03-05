@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<!-- <image class="logo" src="/static/logo.png"></image> -->
+		
 		<view class="text-area">
 			<text class="title">{{title}}</text>
 		</view>
@@ -69,17 +69,16 @@
 					//url拼接传参，在目标页面的onLoad函数中获取
 					url: '../wanandroid/home/home?userName=HZWei',
 					animationType: 'pop-in',
-					animationDuration: 800
+					animationDuration: 500
 
 				})
 			},
 
 			intoWanandroidMain() {
-				console.log('intoWanandroidMain')
 				uni.navigateTo({
 					url: './wanandroid/main',
-					animationType: 'slide-in-right',
-					animationDuration: 500
+					animationType: 'none',
+					animationDuration: 300
 				})
 			}
 		}
