@@ -154,7 +154,7 @@
 					url: "https://www.wanandroid.com/project/list/".concat(pageIndex).concat("/json?cid=294"),
 					success(res) {
 						console.log('getProjectInfo body: ' + JSON.stringify(res.data))
-
+						//res.data: 是响应体
 						if (res.data.errorCode == 0) {
 							uni.stopPullDownRefresh();
 							if (_this.currentPage == 1) {

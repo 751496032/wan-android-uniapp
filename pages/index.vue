@@ -1,6 +1,11 @@
 <template>
 	<view class="content">
-		
+
+		<!-- 
+		在uni-app布局中尽量使用HTML标签元素，虽然是可以使用，有可能会发生
+		不可预测的问题。
+		 -->
+
 		<view class="text-area">
 			<text class="title">{{title}}</text>
 		</view>
@@ -77,7 +82,7 @@
 			intoWanandroidMain() {
 				uni.navigateTo({
 					url: './wanandroid/main',
-					animationType: 'none',
+					animationType: 'none', //把动画去除  主要是为了避免页面切换闪动问题
 					animationDuration: 300
 				})
 			}
